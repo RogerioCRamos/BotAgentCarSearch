@@ -19,12 +19,12 @@ Aplica regras especificas aos campos do carro:
 
 Campos que não seguem a regra são removidos do JSON.
 '''
-def validadeCarData(data):
+def validateCarData(data):
 
     processed = {}
     for key, value in data.items():
 
-        if key == 'direcao' and value not in ['Manual' 'Automatico']:
+        if key == 'direcao' and value not in ['Manual', 'Automatico']:
             continue  
         if key in ['vidros', 'multimidia'] and value not in ['Sim', 'Nao']:
             continue  
@@ -50,7 +50,7 @@ def serverStart():
                 
                 try:
                     clientData = json.loads(data.decode('utf-8'))
-                    validData = validadeCarData(clientData)
+                    validData = validateCarData(clientData)
 
                     carSearchData = carSearch(engine,validData)
                     

@@ -15,9 +15,6 @@ vou utilizar o SQLite
 def dataBaseCreator():
 
     engine = create_engine('sqlite:///cardatabase.db')
-    Session = sessionmaker(bind=engine)
-
-    session = Session()
 
     return engine
 
