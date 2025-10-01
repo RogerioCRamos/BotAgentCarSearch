@@ -93,14 +93,14 @@ if __name__ == '__main__':
     print('\nAgora estou com as suas respostas.\nEstou consultando na nossa lista')
 
     data = sendToServer(clientFilters)
+    if data:
+        if data['status'] == 'ok' and data['data']:
 
-    if data['status'] == 'ok' and data['data']:
+            print(random.choice(response['positiva']))
 
-        print(random.choice(response['positiva']))
+            table_data = [{k: v for k, v in carro.items() if k != 'ID'} for carro in data['data']]
+            print(tabulate(table_data, headers='keys', tablefmt='fancy_grid'))
 
-        table_data = [{k: v for k, v in carro.items() if k != 'ID'} for carro in data['data']]
-        print(tabulate(table_data, headers='keys', tablefmt='fancy_grid'))
-
-    else:
-        print(random.choice(response['negativa']))
+        else:
+            print(random.choice(response['negativa']))
     
